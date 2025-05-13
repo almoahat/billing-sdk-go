@@ -1,37 +1,38 @@
 # Billing SDK with Observability Hooks
 
-🚧 **Work in Progress**
+**Work in Progress**  
+A lightweight SDK in Go to emit billing events with built-in observability support — including structured logs, log levels, and extensible metadata.
 
-This SDK provides a simple interface for emitting billing events while integrating observability primitives such as logging, metrics, and tracing.
+---
 
-## ✨ Features
+## Features
 
-- `TrackEvent(eventName string, metadata map[string]string)`
-- Logs billing events
-- Emits metrics via Prometheus
-- Tracing hooks with OpenTelemetry (coming soon)
+- `TrackEvent(level, eventName, metadata)` logs structured billing events
+- JSON-formatted logs with metadata
+- Support for log levels: `INFO`, `ERROR`, etc.
+- Simple, self-contained SDK design
+- Plug-and-play with existing services
+- Unit-testable with injected log output
+- Example consumer app included (`example_service/`)
 
-## 📦 Tech Stack
+---
+
+## Tech Stack
 
 - Go
-- Log: Standard Go log
-- Metrics: Prometheus client
-- Tracing: OpenTelemetry (planned)
+- Logging: Standard `log` package + JSON formatting
+- File output supported
+- Designed for future Prometheus + OpenTelemetry support
 
-## 📁 Structure
+---
 
-- `sdk/`: SDK implementation
-- `example_service/`: Minimal demo using the SDK
+## Getting Started
 
-## 🚀 Getting Started
+### Clone & Run
 
 ```bash
+git clone https://github.com/your-username/billing-sdk-go.git
+cd billing-sdk-go
+
+go mod tidy
 go run example_service/main.go
-```
-
-## 🛠️ TODO
-
-- Add configurable output sinks
-- Support for async processing
-- Full tracing support
-
